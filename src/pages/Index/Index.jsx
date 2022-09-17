@@ -3,65 +3,109 @@ import React from "react";
 export default function Index() {
   return (
     <div>
-      <div id="carouselId" className="carousel slide" data-bs-ride="carousel">
-        <ol className="carousel-indicators">
-          <li
-            data-bs-target="#carouselId"
+      <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
+        <div className="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#myCarousel"
             data-bs-slide-to={0}
+            className
+            aria-label="Slide 1"
+          />
+          <button
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide-to={1}
+            aria-label="Slide 2"
+            className
+          />
+          <button
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide-to={2}
+            aria-label="Slide 3"
             className="active"
             aria-current="true"
-            aria-label="First slide"
           />
-          <li
-            data-bs-target="#carouselId"
-            data-bs-slide-to={1}
-            aria-label="Second slide"
-          />
-          <li
-            data-bs-target="#carouselId"
-            data-bs-slide-to={2}
-            aria-label="Third slide"
-          />
-        </ol>
-        <div className="carousel-inner" role="listbox">
-          <div className="carousel-item active">
-            <img
-              src="holder.js/900x500/auto/#777:#555/text:First slide"
-              className="w-100 d-block"
-              alt="First slide"
-            />
-            <div className="carousel-caption d-none d-md-block">
-              <h3>Title</h3>
-              <p>Description</p>
+        </div>
+        <div className="carousel-inner">
+          <div className="carousel-item  active">
+            <div>
+              <img
+                src="https://www.glab.vn/storage/uploads/advert/5ee88f140efd4.jpg"
+                width="100%"
+                height="auto"
+                alt="..."
+              />
             </div>
+            {/* <div className="container">
+              <div className="carousel-caption text-start">
+                <h1>Example headline.</h1>
+                <p>
+                  Some representative placeholder content for the first slide of
+                  the carousel.
+                </p>
+                <p>
+                  <a className="btn btn-lg btn-primary" href="#">
+                    Sign up today
+                  </a>
+                </p>
+              </div>
+            </div> */}
           </div>
           <div className="carousel-item">
-            <img
-              src="holder.js/900x500/auto/#666:#444/text:Second slide"
-              className="w-100 d-block"
-              alt="Second slide"
-            />
-            <div className="carousel-caption d-none d-md-block">
-              <h3>Title</h3>
-              <p>Description</p>
+            <div>
+              <img
+                src="https://www.glab.vn/storage/uploads/advert/62da3e54b0a26.jpg"
+                width="100%"
+                height="auto"
+                alt="..."
+              />
             </div>
+            {/* <div className="container">
+              <div className="carousel-caption">
+                <h1>Another example headline.</h1>
+                <p>
+                  Some representative placeholder content for the second slide
+                  of the carousel.
+                </p>
+                <p>
+                  <a className="btn btn-lg btn-primary" href="#">
+                    Learn more
+                  </a>
+                </p>
+              </div>
+            </div> */}
           </div>
           <div className="carousel-item">
-            <img
-              src="holder.js/900x500/auto/#666:#444/text:Third slide"
-              className="w-100 d-block"
-              alt="Third slide"
-            />
-            <div className="carousel-caption d-none d-md-block">
-              <h3>Title</h3>
-              <p>Description</p>
+            <div>
+              <img
+                src="https://www.glab.vn/storage/uploads/advert/5f47b8a34de8f.jpg"
+                width="100%"
+                height='auto'
+                alt="..."
+              />
             </div>
+            {/* <div className="container">
+              <div className="carousel-caption text-end">
+                <h1>One more for good measure.</h1>
+                <p>
+                  Some representative placeholder content for the third slide of
+                  this carousel.
+                </p>
+                <p>
+                  <a className="btn btn-lg btn-primary" href="#">
+                    Browse gallery
+                  </a>
+                </p>
+              </div>
+            </div> */}
           </div>
         </div>
         <button
           className="carousel-control-prev"
           type="button"
-          data-bs-target="#carouselId"
+          data-bs-target="#myCarousel"
           data-bs-slide="prev"
         >
           <span className="carousel-control-prev-icon" aria-hidden="true" />
@@ -70,7 +114,7 @@ export default function Index() {
         <button
           className="carousel-control-next"
           type="button"
-          data-bs-target="#carouselId"
+          data-bs-target="#myCarousel"
           data-bs-slide="next"
         >
           <span className="carousel-control-next-icon" aria-hidden="true" />

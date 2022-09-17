@@ -5,7 +5,7 @@ export default function NavBar() {
     <nav className="navbar navbar-expand-sm navbar-light bg-light">
       <div className="container">
         <NavLink className="navbar-brand fw-bold" to="/">
-          Project Hook
+         KickGeek
         </NavLink>
         <button
           className="navbar-toggler d-lg-none"
