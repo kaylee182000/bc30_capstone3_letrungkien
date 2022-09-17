@@ -30,6 +30,16 @@ export default function NavBar() {
                 Link
               </a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Link
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Link
+              </a>
+            </li>
           </ul>
         </div>
       </div>
