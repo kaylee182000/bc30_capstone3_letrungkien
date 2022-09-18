@@ -1,6 +1,45 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProduct, getProductApi } from "../../redux/reducers/productReducer";
+import { NavLink } from "react-router-dom";
 
 export default function Index() {
+  const { arrProduct } = useSelector((state) => state.productReducer);
+  const dispatch = useDispatch();
+
+  const getAllProduct = () => {
+    const actionThunk = getProductApi();
+    dispatch(actionThunk);
+  };
+
+  React.useEffect(() => {
+    getAllProduct();
+  });
+
+  const renderProduct = () => {
+    return arrProduct.map((item, index) => {
+      return (
+        <div className="col-lg-4 col-12 mt-2" key={index}>
+          <div className="card shadow p-3 mb-5 bg-body rounded border-white">
+            <img src={item.image} alt={item.name} />
+            <div className="card-body">
+              <div className=" row justify-content-between">
+                <div className="col-xl-8 col-12">
+                  <p className="fw-bold">{item.name}</p>
+                </div>
+                <div className="col-xl-3 col-12">
+                  <p>{item.price}$</p>
+                </div>
+              </div>
+              <NavLink className="btn btn-dark" to={`/detail/${item.id}`}>
+                View detail
+              </NavLink>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  };
   return (
     <div>
       <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
@@ -82,7 +121,7 @@ export default function Index() {
               <img
                 src="https://www.glab.vn/storage/uploads/advert/5f47b8a34de8f.jpg"
                 width="100%"
-                height='auto'
+                height="auto"
                 alt="..."
               />
             </div>
@@ -122,8 +161,8 @@ export default function Index() {
         </button>
       </div>
       <div className="container">
-        <h2 className="text-center m-3">Product</h2>
-        
+        <h2 className="text-center m-4">Product</h2>
+        <div className="row">{renderProduct()}</div>
       </div>
     </div>
   );
