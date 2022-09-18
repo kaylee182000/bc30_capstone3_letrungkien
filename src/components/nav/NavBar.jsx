@@ -5,7 +5,7 @@ export default function NavBar() {
     <nav className="navbar navbar-expand-sm navbar-light bg-light">
       <div className="container">
         <NavLink className="navbar-brand fw-bold" to="/">
-         KickGeek
+          KickGeek
         </NavLink>
         <button
           className="navbar-toggler d-lg-none"
@@ -26,21 +26,54 @@ export default function NavBar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/profile">
-                Profile
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/cart">
-                Cart
-              </NavLink>
-            </li>
-            <li className="nav-item">
               <NavLink className="nav-link" to="/login">
                 Login
               </NavLink>
             </li>
           </ul>
+          <div className="d-flex me-3">
+            <ul className="navbar-nav me-auto mt-2 mt-lg-0">
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/profile">
+                  Profile
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/cart">
+                  Cart
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+          <form className="d-flex my-2 my-lg-0">
+            <div className="input-group flex-wrap">
+                <button
+                  className="btn btn-dark my-2 my-sm-0"
+                  type="submit"
+                >
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </button>
+              <input
+                type="text"
+                className="me-sm-2"
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="addon-wrapping"
+              />
+              {/* <input type="text" name="search" placeholder="Search.."></input> */}
+            </div>
+          </form>
+
+          {/* <form className="d-flex my-2 my-lg-0">
+            <input
+              className="form-control me-sm-2"
+              type="text"
+              placeholder="Search"
+            />
+            <button className="btn btn-outline-dark my-2 my-sm-0" type="submit">
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form> */}
         </div>
       </div>
     </nav>

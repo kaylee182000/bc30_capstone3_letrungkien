@@ -121,6 +121,10 @@ export default function Index() {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
+      <div className="container">
+        <h2 className="text-center m-3">Product</h2>
+        
+      </div>
     </div>
   );
 }
