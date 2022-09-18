@@ -31,7 +31,7 @@ export default function Detail() {
         </div>
         <div className="col-lg-6 col-12">
           <div className="row mb-4 justify-content-between">
-            <h3 className="col-6">{productDetail.name}</h3>
+            <h3 className="col-8">{productDetail.name}</h3>
             <p className="col-2 fw-semibold fs-5">{productDetail.price}$</p>
           </div>
           <p className="mb-4">{productDetail.description}</p>
@@ -68,7 +68,7 @@ export default function Detail() {
                       <p className="fw-bold">{item.name}</p>
                     </div>
                     <div className="col-xl-3 col-12">
-                      <p>{item.price}$</p>
+                      <p className="fw-semibold">{item.price}$</p>
                     </div>
                   </div>
                   <NavLink className="btn btn-dark" to={`/detail/${item.id}`}>

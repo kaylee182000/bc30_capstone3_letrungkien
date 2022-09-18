@@ -28,7 +28,7 @@ export default function Index() {
                   <p className="fw-bold">{item.name}</p>
                 </div>
                 <div className="col-xl-3 col-12">
-                  <p>{item.price}$</p>
+                  <p className="fw-semibold">{item.price}$</p>
                 </div>
               </div>
               <NavLink className="btn btn-dark" to={`/detail/${item.id}`}>

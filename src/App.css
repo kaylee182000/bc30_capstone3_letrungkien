@@ -12,6 +12,12 @@ input[type="text"] {
   font-size: 16px;
   padding-left: 5px;
 }
-.card{
+.card {
   height: 520px;
+}
+.card img {
+  transition: all ease-in 0.3s;
+}
+.card:hover img {
+  transform: translateY(-20px);
 }
