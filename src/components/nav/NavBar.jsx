@@ -11,7 +11,7 @@ export default function NavBar() {
           KickGeek
         </NavLink>
         <button
-          className="navbar-toggler d-lg-none"
+          className="navbar-toggler d-lg-none text-white"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#collapsibleNavId"
