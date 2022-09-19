@@ -1,10 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import image1 from "../../assets/img/image 8.png";
+import logo from "../../assets/img/j1.png";
 export default function NavBar() {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-sm navbar-black bg-black">
       <div className="container">
         <NavLink className="navbar-brand fw-bold text-white fs-3" to="/">
+          <img src={logo} alt="" style={{ width: "5%" }} className="me-2" />
           KickGeek
         </NavLink>
         <button
@@ -20,7 +23,7 @@ export default function NavBar() {
         </button>
 
         <div className="collapse navbar-collapse" id="collapsibleNavId">
-          <ul className="navbar-nav me-auto mt-2 mt-lg-0">
+          {/* <ul className="navbar-nav me-auto mt-2 mt-lg-0">
             <li className="nav-item active">
               <NavLink className="nav-link text-white" to="/">
                 Home
@@ -31,9 +34,24 @@ export default function NavBar() {
                 Login
               </NavLink>
             </li>
-          </ul>
+          </ul> */}
           <div className="d-flex me-3">
             <ul className="navbar-nav me-auto mt-2 mt-lg-0">
+              <li className="nav-item active">
+                <NavLink className="nav-link text-white" to="/">
+                  Home
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link text-white" to="/login">
+                  Login
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link text-white" to="/register">
+                  Register
+                </NavLink>
+              </li>
               <li className="nav-item">
                 <NavLink className="nav-link text-white" to="/profile">
                   Profile
@@ -41,29 +59,16 @@ export default function NavBar() {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link text-white" to="/cart">
-                  Cart
+                  <img src={image1} alt="" />
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link text-white" to="/search">
+                  <i className="fa-solid fa-magnifying-glass"></i>
                 </NavLink>
               </li>
             </ul>
           </div>
-          <form className="d-flex my-2 my-lg-0">
-            <div className="input-group flex-wrap">
-              <button
-                className="btn btn-outline-secondary my-2 me-sm-0"
-                type="submit"
-              >
-                <i className="fa-solid fa-magnifying-glass"></i>
-              </button>
-              <input
-                type="text"
-                className="form-control my-sm-2"
-                placeholder="Search"
-                aria-label="Search"
-                aria-describedby="addon-wrapping"
-              />
-              {/* <input type="text" name="search" placeholder="Search.."></input> */}
-            </div>
-          </form>
 
           {/* <form className="d-flex my-2 my-lg-0">
             <input
@@ -80,4 +85,3 @@ export default function NavBar() {
     </nav>
   );
 }
-
