@@ -39,7 +39,7 @@ export default function Footer() {
         </div>
       </div>
       <p className="text-center text-white mt-4" style={{ fontSize: "10px" }}>
-        Copyright © 2022 CyberSoft ALl Rights Reserved
+        Copyright © 2022 CyberSoft ALL Rights Reserved
       </p>
     </div>
   );

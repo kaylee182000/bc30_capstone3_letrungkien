@@ -1,53 +1,41 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
 export default function Login() {
   return (
-    <div className="container">
-      <div className="card d-flex justify-content-center shadow p-5 mb-5 mt-5 bg-body rounded">
+    <div className="container" style={{height: "65vh"}}>
+      <div className="form-signin w-100 m-auto">
         <form>
-          <div className="mb-4">
-            <label htmlFor="exampleInputEmail1" className="form-label">
-              Email address
-            </label>
+          <h1 className="h3 mb-3 fw-semibold text-center">Please Sign In</h1>
+          <div className="form-floating">
             <input
               type="email"
               className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
+              id="floatingInput"
+              placeholder="name@example.com"
             />
-            {/* <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
-          </div> */}
+            <label htmlFor="floatingInput">Email address</label>
           </div>
-          <div className="mb-4">
-            <label htmlFor="exampleInputPassword1" className="form-label">
-              Password
-            </label>
+          <div className="form-floating">
             <input
               type="password"
               className="form-control"
-              id="exampleInputPassword1"
+              id="floatingPassword"
+              placeholder="Password"
             />
+            <label htmlFor="floatingPassword">Password</label>
           </div>
-          <div className="mb-4 form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="exampleCheck1"
-            />
-            <label className="form-check-label" htmlFor="exampleCheck1">
-              Keep me signed in
+          <div className="checkbox mb-3">
+            <label>
+              <input type="checkbox" defaultValue="remember-me" /> Remember me
             </label>
           </div>
-          <button type="submit" className="btn btn-dark">
-            Login
+          <button className="w-100 btn btn-lg btn-dark" type="submit">
+            Sign in
           </button>
+          <p className="mt-5 mb-3 text-muted text-center">Not a Member? 
+          <NavLink to="/register" className="text-black"> Join Us</NavLink>
+          </p>
         </form>
-        <p className="mt-4">
-          Not a Member?
-          <NavLink className="text-black" to="/register"> Join us</NavLink>
-        </p>
       </div>
     </div>
   );
