@@ -15,9 +15,15 @@ export default function Detail() {
     dispatch(action);
   };
 
+  const renderSize = () => {
+    return productDetail.size?.map((n) => {
+      return <option value={n}>{n}</option>;
+    });
+  };
+
   React.useEffect(() => {
     getProductDetailApi();
-    window.scrollTo(0, 10)
+    window.scrollTo(0, 10);
   }, [params.id]);
 
   return (
@@ -33,18 +39,21 @@ export default function Detail() {
         <div className="col-lg-6 col-12">
           <div className="row mb-3 justify-content-between">
             <h4 className="col-lg-9 col-12">{productDetail.name}</h4>
-            <p className="col-lg-2 col-12 fw-semibold fs-5">{productDetail.price}$</p>
+            <p className="col-lg-2 col-12 fw-semibold fs-5">
+              {productDetail.price}$
+            </p>
           </div>
           <p className="mb-4">{productDetail.description}</p>
           <select className="form-select" aria-label="Default select example">
             <option selected>Select Size</option>
-            <option value="36">36</option>
+            {/* <option value="36">36</option>
             <option value="37">37</option>
             <option value="38">38</option>
             <option value="39">39</option>
             <option value="40">40</option>
             <option value="41">41</option>
-            <option value="42">42</option>
+            <option value="42">42</option> */}
+            {renderSize()}
           </select>
           <div className="mt-3">
             <button className="btn btn-light me-2">+</button>
