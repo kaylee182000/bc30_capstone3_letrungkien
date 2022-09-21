@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import { getProductDetail } from "../../redux/reducers/productReducer";
+import { getProductDetail,addCart } from "../../redux/reducers/productReducer";
+
 
 export default function Detail() {
   const { productDetail } = useSelector((state) => state.productReducer);
@@ -9,18 +10,28 @@ export default function Detail() {
 
   const params = useParams();
 
+  //them vao gio hang
+  const addToCart = (prod) => {
+    console.log(prod)
+    const action = addCart(prod)
+    dispatch(action)
+  }
+
+  //lay id cua sp click truyen xuong reducer
   const getProductDetailApi = () => {
     let { id } = params;
     const action = getProductDetail(id);
     dispatch(action);
   };
 
+  //render size giay
   const renderSize = () => {
     return productDetail.size?.map((n) => {
       return <option value={n}>{n}</option>;
     });
   };
 
+  //render lai trang moi lan them san pham moi
   React.useEffect(() => {
     getProductDetailApi();
     window.scrollTo(0, 10);
@@ -60,7 +71,9 @@ export default function Detail() {
             <span>1</span>
             <button className="btn btn-light ms-2">-</button>
           </div>
-          <button className="btn btn-dark mt-3">Add to Cart</button>
+          <button className="btn btn-dark mt-3" onClick={() => {
+            addToCart(productDetail)
+          }}>Add to Cart</button>
         </div>
       </div>
       <h3 className="text-center m-4">-Related Product-</h3>
