@@ -22,23 +22,29 @@ const productReducer = createSlice({
       const productDetail = action.payload;
       state.productDetail = productDetail;
     },
-    addCart: (state, action) => {
-      let cart = action.payload;
+    addProd: (state, action) => {
+      let prod = action.payload;
       let cartUpdate = [...state.cart];
-      cart = { ...cart, count: 1 };
-      let sp = cartUpdate.find((prod) => prod.id === cart.id);
+      prod = { ...prod, count: 1 };
+      let sp = cartUpdate.find((p) => p.id === prod.id);
       if (sp) {
         sp.count += 1;
       } else {
-        cartUpdate.push(cart);
+        cartUpdate.push(prod);
       }
 
       state.cart = cartUpdate;
     },
+    deleteProd: (state,action) => {
+      let delProdId = action.payload
+      let cartUpdate = [...state.cart]
+      cartUpdate = cartUpdate.filter(sp => sp.id !== delProdId)
+      state.cart = cartUpdate
+    }
   },
 });
 
-export const { getProduct, getDetail, addCart } = productReducer.actions;
+export const { getProduct, getDetail, addProd,deleteProd } = productReducer.actions;
 
 export default productReducer.reducer;
 

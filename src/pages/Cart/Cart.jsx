@@ -1,16 +1,22 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteProd } from "../../redux/reducers/productReducer";
+
 
 export default function Cart() {
   const { cart } = useSelector((state) => state.productReducer);
-  //console.log(cart)
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  //Xoa san pham
+  const deleteProduct = (idClick) => {
+    const action = deleteProd(idClick)
+    dispatch(action)
+  }
 
   //map la san pham trong cart
   const renderCart = () => {
     return cart.map((prod) => {
       return (
-        <tr className="table-light text-center">
+        <tr className="table-light text-center" key={prod.id}>
           <td scope="row">{prod.id}</td>
           <td>
             <img src={prod.image} alt="" width={50}/>
@@ -24,8 +30,9 @@ export default function Cart() {
           </td>
           <td></td>
           <td>
-            <button className="btn btn-secondary me-2">Edit</button>
-            <button className="btn btn-dark">Delete</button>
+            <button className="btn btn-dark" onClick={() => {
+              deleteProduct(prod.id)
+            }}>Delete</button>
           </td>
         </tr>
       );
@@ -47,7 +54,7 @@ export default function Cart() {
           <tbody>
             <tr className="text-center">
               <th>Id</th>
-              <th>Img</th>
+              <th>Image</th>
               <th>Name</th>
               <th>Price</th>
               <th>Quatity</th>

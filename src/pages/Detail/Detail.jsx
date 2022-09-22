@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import { getProductDetail,addCart } from "../../redux/reducers/productReducer";
+import { getProductDetail,addProd } from "../../redux/reducers/productReducer";
 
 
 export default function Detail() {
@@ -13,7 +13,7 @@ export default function Detail() {
   //them vao gio hang
   const addToCart = (prod) => {
     //console.log(prod)
-    const action = addCart(prod)
+    const action = addProd(prod)
     dispatch(action)
   }
 
@@ -26,8 +26,8 @@ export default function Detail() {
 
   //render size giay
   const renderSize = () => {
-    return productDetail.size?.map((n) => {
-      return <option value={n}>{n}</option>;
+    return productDetail.size?.map((n,index) => {
+      return <option value={n} key={index}>{n}</option>;
     });
   };
 
