@@ -16,13 +16,18 @@ import Cart from "./pages/Cart/Cart";
 import Detail from "./pages/Detail/Detail";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-import Search from "./pages/Search/Search"
+import Search from "./pages/Search/Search";
 
+//history
+import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
+export const history = createBrowserHistory({ window });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HistoryRouter history={history}>
       <Routes>
         <Route path="" element={<App />}>
           <Route index element={<Index />}></Route>
@@ -36,7 +41,7 @@ root.render(
           <Route path="search" element={<Search />}></Route>
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   </Provider>
 );
 
