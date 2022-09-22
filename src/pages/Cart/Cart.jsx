@@ -2,41 +2,59 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProd } from "../../redux/reducers/productReducer";
 
-
 export default function Cart() {
   const { cart } = useSelector((state) => state.productReducer);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   //Xoa san pham
   const deleteProduct = (idClick) => {
-    const action = deleteProd(idClick)
-    dispatch(action)
-  }
+    const action = deleteProd(idClick);
+    dispatch(action);
+  };
 
   //map la san pham trong cart
   const renderCart = () => {
-    return cart.map((prod) => {
+    if (cart.length === 0) {
       return (
-        <tr className="table-light text-center" key={prod.id}>
-          <td scope="row">{prod.id}</td>
-          <td>
-            <img src={prod.image} alt="" width={50}/>
-          </td>
-          <td>{prod.name}</td>
-          <td>{prod.price}</td>
-          <td>
-            <button className="btn btn-dark mx-2">+</button>
-            <span>{prod.count}</span>
-            <button className="btn btn-dark mx-2">-</button>
-          </td>
-          <td></td>
-          <td>
-            <button className="btn btn-dark" onClick={() => {
-              deleteProduct(prod.id)
-            }}>Delete</button>
-          </td>
+        <tr className="table-light text-center">
+          <td scope="row">__</td>
+          <td>__</td>
+          <td>__</td>
+          <td>__</td>
+          <td>__</td>
+          <td>__</td>
+          <td>__</td>
         </tr>
       );
-    });
+    } else {
+      return cart.map((prod) => {
+        return (
+          <tr className="table-light text-center" key={prod.id}>
+            <td scope="row">{prod.id}</td>
+            <td>
+              <img src={prod.image} alt="" width={50} />
+            </td>
+            <td>{prod.name}</td>
+            <td>{prod.price}</td>
+            <td>
+              <button className="btn btn-dark mx-2">+</button>
+              <span>{prod.count}</span>
+              <button className="btn btn-dark mx-2">-</button>
+            </td>
+            <td></td>
+            <td>
+              <button
+                className="btn btn-dark"
+                onClick={() => {
+                  deleteProduct(prod.id);
+                }}
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        );
+      });
+    }
   };
 
   return (
