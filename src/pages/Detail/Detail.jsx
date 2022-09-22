@@ -12,7 +12,7 @@ export default function Detail() {
 
   //them vao gio hang
   const addToCart = (prod) => {
-    console.log(prod)
+    //console.log(prod)
     const action = addCart(prod)
     dispatch(action)
   }

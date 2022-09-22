@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 export default function Cart() {
   const { cart } = useSelector((state) => state.productReducer);
-  console.log(cart)
+  //console.log(cart)
   //const dispatch = useDispatch();
 
   //map la san pham trong cart
@@ -11,14 +11,15 @@ export default function Cart() {
     return cart.map((prod) => {
       return (
         <tr className="table-light text-center">
-          <td scope="row"></td>
-          <td>{prod.id}</td>
-          <td>{prod.image}</td>
+          <td scope="row">{prod.id}</td>
+          <td>
+            <img src={prod.image} alt="" width={50}/>
+          </td>
           <td>{prod.name}</td>
           <td>{prod.price}</td>
           <td>
             <button className="btn btn-dark mx-2">+</button>
-            <span>1</span>
+            <span>{prod.count}</span>
             <button className="btn btn-dark mx-2">-</button>
           </td>
           <td></td>
@@ -45,14 +46,13 @@ export default function Cart() {
           <thead className="table-light"></thead>
           <tbody>
             <tr className="text-center">
-              <th></th>
-              <th>id</th>
-              <th>img</th>
-              <th>name</th>
-              <th>price</th>
-              <th>quatity</th>
-              <th>total</th>
-              <th>action</th>
+              <th>Id</th>
+              <th>Img</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quatity</th>
+              <th>Total</th>
+              <th>Action</th>
             </tr>
           </tbody>
           <tbody className="table-group-divider">

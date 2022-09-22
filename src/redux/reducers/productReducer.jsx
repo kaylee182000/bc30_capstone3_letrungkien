@@ -23,7 +23,7 @@ const productReducer = createSlice({
       state.productDetail = productDetail;
     },
     addCart: (state, action) => {
-      let { cart } = action.payload;
+      let cart = action.payload;
       let cartUpdate = [...state.cart];
       cart = { ...cart, count: 1 };
       let sp = cartUpdate.find((prod) => prod.id === cart.id);
@@ -32,6 +32,7 @@ const productReducer = createSlice({
       } else {
         cartUpdate.push(cart);
       }
+
       state.cart = cartUpdate;
     },
   },
