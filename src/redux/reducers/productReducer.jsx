@@ -11,17 +11,20 @@ const productReducer = createSlice({
   name: "productReducer",
   initialState,
   reducers: {
+    //lay all product
     getProduct: (state, action) => {
       //lay du lieu tu payload
       const arrProduct = action.payload;
       // cap nhat lai state
       state.arrProduct = arrProduct;
     },
+    //lay detail
     getDetail: (state, action) => {
       //buoc 4: Sau khi nhan duoc du lieu tu dispatch 2
       const productDetail = action.payload;
       state.productDetail = productDetail;
     },
+    //them vao cart
     addProd: (state, action) => {
       let prod = action.payload;
       let cartUpdate = [...state.cart];
@@ -35,16 +38,36 @@ const productReducer = createSlice({
 
       state.cart = cartUpdate;
     },
-    deleteProd: (state,action) => {
-      let delProdId = action.payload
+    //xoa khoi cart
+    deleteProd: (state, action) => {
+      let delProdId = action.payload;
+      let cartUpdate = [...state.cart];
+      cartUpdate = cartUpdate.filter((sp) => sp.id !== delProdId);
+      state.cart = cartUpdate;
+    },
+    //tang giam so luong
+    increaseDecrease: (state, action) => {
+      let { idClick, num } = action.payload;
+      //console.log({ idClick, num });
       let cartUpdate = [...state.cart]
-      cartUpdate = cartUpdate.filter(sp => sp.id !== delProdId)
+      let sp =cartUpdate.find(sp => sp.id === idClick)
+      if(sp){
+        sp.count += num
+        if(sp.count < 1){
+          if(window.confirm('Xóa khỏi giỏ hàng')){
+            cartUpdate = cartUpdate.filter(sp => sp.id !== idClick)
+          }else {
+            sp.count -= num
+          }
+        }
+      }
       state.cart = cartUpdate
-    }
+    },
   },
 });
 
-export const { getProduct, getDetail, addProd,deleteProd } = productReducer.actions;
+export const { getProduct, getDetail, addProd, deleteProd, increaseDecrease } =
+  productReducer.actions;
 
 export default productReducer.reducer;
 

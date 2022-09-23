@@ -1,22 +1,29 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProd } from "../../redux/reducers/productReducer";
+import { deleteProd, increaseDecrease } from "../../redux/reducers/productReducer";
 
 export default function Cart() {
   const { cart } = useSelector((state) => state.productReducer);
   const dispatch = useDispatch();
+
   //Xoa san pham
   const deleteProduct = (idClick) => {
     const action = deleteProd(idClick);
     dispatch(action);
   };
 
+  //tang giam so luong
+  const upDown = ({idClick,num}) => {
+    const action = increaseDecrease({idClick,num})
+    dispatch(action)
+  }
+
   //map la san pham trong cart
   const renderCart = () => {
     if (cart.length === 0) {
       return (
         <tr className="table-light text-center">
-          <td scope="row">__</td>
+          <td>__</td>
           <td>__</td>
           <td>__</td>
           <td>__</td>
@@ -29,18 +36,22 @@ export default function Cart() {
       return cart.map((prod) => {
         return (
           <tr className="table-light text-center" key={prod.id}>
-            <td scope="row">{prod.id}</td>
+            <td>{prod.id}</td>
             <td>
               <img src={prod.image} alt="" width={50} />
             </td>
             <td>{prod.name}</td>
             <td>{prod.price}</td>
             <td>
-              <button className="btn btn-dark mx-2">+</button>
+              <button className="btn btn-dark mx-2" onClick={() => {
+                upDown({idClick:prod.id,num:1})
+              }}>+</button>
               <span>{prod.count}</span>
-              <button className="btn btn-dark mx-2">-</button>
+              <button className="btn btn-dark mx-2" onClick={() => {
+                upDown({idClick:prod.id,num:-1})
+              }}>-</button>
             </td>
-            <td></td>
+            <td>{prod.count * prod.price}</td>
             <td>
               <button
                 className="btn btn-dark"
