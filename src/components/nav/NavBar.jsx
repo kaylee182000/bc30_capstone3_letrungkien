@@ -2,7 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import image1 from "../../assets/img/image 8.png";
 import logo from "../../assets/img/j1.png";
+//import { useSelector } from "react-redux";
+
 export default function NavBar() {
+
   return (
     <nav className="navbar navbar-expand-sm navbar-black bg-black">
       <div className="container">
