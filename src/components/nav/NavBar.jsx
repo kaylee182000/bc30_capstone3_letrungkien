@@ -2,17 +2,51 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import image1 from "../../assets/img/image 8.png";
 import logo from "../../assets/img/j1.png";
-//import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function NavBar() {
+  const { userLogin } = useSelector((state) => state.userReducer);
+
+  console.log(userLogin);
+  const renderLoginNavItem = () => {
+    if (userLogin == null) {
+      return (
+        <>
+          <li className="nav-item me-2">
+            <NavLink className="nav-link text-white mt-1" to="/login">
+              Login
+            </NavLink>
+          </li>
+          <li className="nav-item me-2">
+            <NavLink className="nav-link text-white mt-1" to="/register">
+              Register
+            </NavLink>
+          </li>
+          <li className="nav-item me-2">
+            <NavLink className="nav-link text-white mt-1" to="/profile">
+              Profile
+            </NavLink>
+          </li>
+        </>
+      );
+    }
+    return (
+      <li className="nav-item me-2">
+        <NavLink className="nav-link text-white fs-5" to="/profile">
+          <i class="fa-regular fa-circle-user"></i>
+        </NavLink>
+      </li>
+    );
+  };
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-black bg-black">
+    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
       <div className="container">
         <NavLink className="navbar-brand fw-bold text-white fs-3" to="/">
-          <img src={logo} alt="" style={{ width: "5%" }} className="me-2" />
+          {/* <img src={logo} alt="" style={{ width: "5%" }} className="me-2" /> */}
           KickGeek
         </NavLink>
+
         <button
           className="navbar-toggler d-lg-none text-white"
           type="button"
@@ -38,51 +72,22 @@ export default function NavBar() {
               </NavLink>
             </li>
           </ul> */}
-          <div className="d-flex me-3">
-            <ul className="navbar-nav me-auto mt-2 mt-lg-0">
-              <li className="nav-item active">
-                <NavLink className="nav-link text-white" to="/">
-                  Home
+          <div className="mt-2">
+            <ul className="navbar-nav me-auto mt-lg-0">
+              {renderLoginNavItem()}
+              <li className="nav-item">
+                <NavLink className="nav-link text-white fs-5" to="/cart">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                  {/* <i class="fa-regular fa-circle-user"></i> */}
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link text-white" to="/login">
-                  Login
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link text-white" to="/register">
-                  Register
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link text-white" to="/profile">
-                  Profile
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link text-white" to="/cart">
-                  <img src={image1} alt="" />
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link text-white" to="/search">
-                  <i className="fa-solid fa-magnifying-glass"></i>
+                <NavLink className="nav-link text-white fs-5" to="/search">
+                  <i class="fa-solid fa-magnifying-glass"></i>
                 </NavLink>
               </li>
             </ul>
           </div>
-
-          {/* <form className="d-flex my-2 my-lg-0">
-            <input
-              className="form-control me-sm-2"
-              type="text"
-              placeholder="Search"
-            />
-            <button className="btn btn-outline-dark my-2 my-sm-0" type="submit">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </form> */}
         </div>
       </div>
     </nav>

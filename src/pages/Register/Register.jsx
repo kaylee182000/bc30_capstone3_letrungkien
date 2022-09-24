@@ -18,11 +18,11 @@ export default function Register() {
     validationSchema: Yup.object().shape({
       email: Yup.string()
         .required("Email không được để trống")
-        .email("email không đúng định dạng"),
+        .email("Email không đúng định dạng"),
       password: Yup.string()
         .required("Password không được để trống")
-        .min(6, "Password có độ dài từ 6 đến 32 ký tự")
-        .max(32, "Password có độ dài từ 6 đến 32 ký tự"),
+        .min(6, "Password có độ dài từ 6-32 ký tự")
+        .max(32, "Password có độ dài từ 6-32 ký tự"),
       name: Yup.string()
         .required("Tên không được bỏ trống")
         .matches(
@@ -38,8 +38,8 @@ export default function Register() {
         .max(10, "Số điện thoại tối đa 10 số"),
       passwordConfirm: Yup.string()
         .required("Password không được để trống")
-        .min(6, "Password có độ dài từ 6 đến 32 ký tự")
-        .max(32, "Password có độ dài từ 6 đến 32 ký tự"),
+        .min(6, "Password có độ dài từ 6-32 ký tự")
+        .max(32, "Password có độ dài từ 6-32 ký tự"),
     }),
     onSubmit: (values) => {
       dispatch(registerApi(values));
@@ -150,7 +150,8 @@ export default function Register() {
                   className="form-check-input"
                   type="radio"
                   name="gender"
-                  id="gender1"
+                  id="gender"
+                  value={true}
                   defaultValue="option1"
                   defaultChecked
                 />
@@ -165,7 +166,8 @@ export default function Register() {
                   className="form-check-input"
                   type="radio"
                   name="gender"
-                  id="gender2"
+                  id="gender"
+                  value={false}
                   defaultValue="option1"
                   defaultChecked
                 />

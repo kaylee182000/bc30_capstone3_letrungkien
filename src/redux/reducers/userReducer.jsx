@@ -73,3 +73,4 @@ export const getProfileApi = () => {
     }
   };
 };
+console.log(USER_LOGIN)
