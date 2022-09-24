@@ -33,7 +33,7 @@ export default function Register() {
         .required("Số điện thoại được để trống")
         .matches(
           /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/,
-          "Số điện thoại không đúng định dạng(09...)"
+          "Số điện thoại không đúng định dạng"
         )
         .max(10, "Số điện thoại tối đa 10 số"),
       passwordConfirm: Yup.string()

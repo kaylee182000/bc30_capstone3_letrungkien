@@ -53,6 +53,8 @@ export const loginApi = (userLogin) => {
 
       const action = getProfileApi();
       dispatch(action);
+      history.push("/")
+      window.scrollTo(0, 10);
     } catch (error) {
       console.log(error);
     }
