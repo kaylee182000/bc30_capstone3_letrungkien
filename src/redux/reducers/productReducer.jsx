@@ -50,19 +50,19 @@ const productReducer = createSlice({
     increaseDecrease: (state, action) => {
       let { idClick, num } = action.payload;
       //console.log({ idClick, num });
-      let cartUpdate = [...state.cart]
-      let sp =cartUpdate.find(sp => sp.id === idClick)
-      if(sp){
-        sp.count += num
-        if(sp.count < 1){
-          if(window.confirm('Xóa khỏi giỏ hàng')){
-            cartUpdate = cartUpdate.filter(sp => sp.id !== idClick)
-          }else {
-            sp.count -= num
+      let cartUpdate = [...state.cart];
+      let sp = cartUpdate.find((sp) => sp.id === idClick);
+      if (sp) {
+        sp.count += num;
+        if (sp.count < 1) {
+          if (window.confirm("Xóa khỏi giỏ hàng")) {
+            cartUpdate = cartUpdate.filter((sp) => sp.id !== idClick);
+          } else {
+            sp.count -= num;
           }
         }
       }
-      state.cart = cartUpdate
+      state.cart = cartUpdate;
     },
   },
 });
@@ -75,7 +75,7 @@ export default productReducer.reducer;
 export const getProductApi = () => {
   return async (dispatch) => {
     try {
-      const result = await http.get('/Product')
+      const result = await http.get("/Product");
       //sau khi lay du lieu tu api ve thi set State
       //setArrProduct(result.data.content);
       const action = getProduct(result.data.content);
@@ -99,3 +99,5 @@ export const getProductDetail = (id) => {
     }
   };
 };
+
+

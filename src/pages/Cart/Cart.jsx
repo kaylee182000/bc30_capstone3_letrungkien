@@ -111,6 +111,9 @@ export default function Cart() {
             </tr> */}
             {renderCart()}
           </tbody>
+          <footer>
+            <button className="btn btn-danger">Order</button>
+          </footer>
         </table>
       </div>
     </div>

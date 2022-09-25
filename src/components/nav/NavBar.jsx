@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 
 export default function NavBar() {
   const { userLogin } = useSelector((state) => state.userReducer);
-
-  console.log(userLogin);
   const renderLoginNavItem = () => {
     if (userLogin == null) {
       return (
@@ -75,13 +73,16 @@ export default function NavBar() {
           <div className="mt-2">
             <ul className="navbar-nav me-auto mt-lg-0">
               {renderLoginNavItem()}
-              <li className="nav-item">
+              <li className="nav-item me-2">
                 <NavLink className="nav-link text-white fs-5" to="/cart">
-                  <i class="fa-solid fa-bag-shopping"></i>
+                  <i className="fa-solid fa-cart-shopping" />
+                  <span className="position-absolute top-20 start-20 translate-middle badge rounded-pill bg-danger">
+                    1
+                  </span>
                   {/* <i class="fa-regular fa-circle-user"></i> */}
                 </NavLink>
               </li>
-              <li className="nav-item">
+              <li className="nav-item me-2">
                 <NavLink className="nav-link text-white fs-5" to="/search">
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </NavLink>
